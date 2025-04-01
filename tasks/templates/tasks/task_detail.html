@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row g-0">
+    <div class="row g-0" >
 
         <!-- Coluna principal: Detalhes da Tarefa -->
         <div class="col-md-3">
@@ -54,24 +54,20 @@
                     <h4>Arquivos Relacionados</h4>
                 </div>
                 <div class="card-body text-center">
-                    <ul class="list-unstyled text-start">
+                    <ul>
                         {% for doc in task.documents.all %}
-                            <li class="d-flex justify-content-between align-items-center">
+                            <li>
                                 {% if doc.file %}
-                                    <a href="{{ doc.file.url }}" target="_blank">{{ doc.custom_name|default:doc.file.name }}</a>
+                                    <a href="{{ doc.file.url }}" target="_blank">{{ doc.file.name }}</a>
                                 {% elif doc.onedrive_link %}
-                                    <a href="{{ doc.onedrive_link }}" target="_blank">{{ doc.custom_name|default:"Link do OneDrive" }}</a>
+                                    <a href="{{ doc.onedrive_link }}" target="_blank">🔗 Link do OneDrive</a>
                                 {% endif %}
-                                <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-danger btn-sm ms-auto">Excluir</a>
+                                <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                             </li>
                         {% endfor %}
                     </ul>
-                    
-                    {% if not request.GET.add_file %}
-                    <a href="?add_file=true" class="btn btn-success mt-2">Adicionar Arquivo</a>
-                    {% endif %}
 
-                    {% if request.GET.add_file %}
+                    <!-- Formulário para adicionar novo arquivo ou link -->
                     <h3>Adicionar Novo Arquivo ou Link</h3>
                     <form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}">
                         {% csrf_token %}
@@ -82,15 +78,8 @@
                         <label for="onedrive_link">Adicionar Link do OneDrive:</label>
                         <input type="url" name="onedrive_link" id="onedrive_link" class="form-control">
 
-                        <label for="custom_name">Nome Personalizado:</label>
-                        <input type="text" name="custom_name" id="custom_name" class="form-control" placeholder="Digite um nome para o arquivo">
-
                         <button type="submit" class="btn btn-success mt-2">Enviar</button>
-                        <a href="?" class="btn btn-secondary mt-2">Cancelar</a>
                     </form>
-
-                    {% endif %}
-
                 </div>
             </div>
         </div>

@@ -7,8 +7,6 @@ from .forms import DocumentForm
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 
-from django.urls import reverse_lazy
-
 class FileUploadView(LoginRequiredMixin, CreateView):
     model = Docs
     form_class = DocumentForm
@@ -22,9 +20,7 @@ class FileUploadView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        
-        return reverse_lazy('task-detail', kwargs={'pk': self.kwargs.get('pk')})
-
+        return reverse_lazy("task-detail", kwargs={"pk": self.kwargs.get("pk")})
     
 class FileListView(ListView):
     model = Docs
