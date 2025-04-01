@@ -2,9 +2,19 @@
 
 {% block content %}
 <h1>Upload de Arquivo</h1>
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
+    
+    <label for="file">Selecionar Arquivo:</label>
+    <input type="file" name="file" id="file" class="form-control">
+
+    <label for="onedrive_link">Adicionar Link do OneDrive:</label>
+    <input type="url" name="onedrive_link" id="onedrive_link" class="form-control">
+
+    <label for="custom_name">Nome Personalizado:</label>
+    <input type="text" name="custom_name" id="custom_name" class="form-control" placeholder="Digite o nome personalizado">
+
+    <button type="submit" class="btn btn-success mt-2">Enviar</button>
+    <a href="?" class="btn btn-secondary mt-2">Cancelar</a>
 </form>
 {% endblock %}
