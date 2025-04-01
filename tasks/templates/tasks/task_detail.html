@@ -2,20 +2,46 @@
 
 {% block content %}
 <h1>Detalhes da Tarefa</h1>
-<p><strong>Projeto:</strong> {{ task.title }}</p>
-<p><strong>Descrição:</strong> {{ task.description }}</p>
-<p><strong>Status:</strong>
-    
-    {% if task.status == 'P' %}
-        Pendente
-    {% elif task.status == 'A' %}
-        Em Andamento
-    {% elif task.status == 'C' %}
-        Concluido
-    {% endif %}
-</p>
-<p><strong>Data de criação:</strong> {{ task.created_at|date:"d/m/Y H:i" }}</p>
-<p><strong>Data de Entrega:</strong> {{ task.due_date|date:"d/m/Y" }}</p>
-<a href="{% url 'task-list' %}" class="btn btn-secondary">Voltar à Lista</a>
 
-{% endblock content %}
+{% if not editing %}
+<div id="task-details">
+    <p><strong>Projeto:</strong> {{ task.title }}</p>
+    <p><strong>Descrição:</strong> {{ task.description }}</p>
+    <p><strong>Status:</strong>
+        {% if task.status == 'P' %}
+            Pendente
+        {% elif task.status == 'A' %}
+            Em Andamento
+        {% elif task.status == 'C' %}
+            Concluído
+        {% endif %}
+    </p>
+    <p><strong>Data de criação:</strong> {{ task.created_at|date:"d/m/Y H:i" }}</p>
+    <p><strong>Data de Entrega:</strong> {{ task.due_date|date:"d/m/Y" }}</p>
+    
+    <h2>Colaboradores</h2>
+    <ul>
+        {% for user in task.collaborators.all %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="?editing=true" class="btn btn-warning">Editar</a> 
+</div>
+{% endif %}
+
+{% if editing %}
+<div id="task-edit">
+    <h2>Editar Tarefa</h2>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}  
+
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="?editing=false" class="btn btn-secondary">Cancelar</a> 
+    </form>
+</div>
+{% endif %}
+
+<a href="{% url 'task-list' %}" class="btn btn-secondary mt-2">Voltar à Lista</a>
+{% endblock %}
