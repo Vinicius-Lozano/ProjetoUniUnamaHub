@@ -74,13 +74,11 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
         context['form'] = form
         return render(request, self.template_name, context)
 
-    class TaskCollaboratorUpdateView(LoginRequiredMixin, UpdateView):
-        model = Task
-        form_class = TaskCollaboratorForm
-        template_name = 'tasks/task_collaborators.html'
-        success_url = reverse_lazy('task-list')
+class TaskCollaboratorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskCollaboratorForm
+    template_name = 'tasks/task_collaborators.html'
+    success_url = reverse_lazy('task-list')
 
-        def get_queryset(self):
-            return Task.objects.filter(user=self.request.user)
-        
-        
+    def get_queryset(self):
+         return Task.objects.filter(user=self.request.user)

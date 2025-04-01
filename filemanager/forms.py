@@ -4,4 +4,4 @@ from .models import Docs
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Docs
-        fields = ['file']
+        fields = ['file', 'onedrive_link']
