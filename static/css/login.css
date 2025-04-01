@@ -1,0 +1,62 @@
+root {
+    --cor01: #0e8966;
+    --cor02: #0b7857;
+    --cor03: #076747;
+    --cor04: #045638;
+    --cor05: #004528;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b7857;
+}
+
+.flex {
+    padding: 4rem 4%;
+    background-color: #0b7857;
+    font-family: "PT Sans", sans serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex h1 {
+    font-size: 72px;
+    font-weight: 700;
+}
+
+.flex p {
+    font-size: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+}
+
+.form-btn {
+    margin: 1rem 0;
+    font-family: "PT Sans", sans serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    width: 6rem;
+    height: 3rem;
+    background-color: #076747;
+    border-radius: 15%;
+    transition: .5s;
+}
+
+.form-btn:hover {
+    box-shadow: 0px 0px 8px #045638;
+    transform: scale(1.05);
+}

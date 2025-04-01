@@ -1,23 +1,47 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %} {% load static %}
 
-{% block content %}
-<h1>login</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faça login</title>
+    <!-- CSS - LINK -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="flex">
+        <div>
+            <img src="{% static 'img/Unama_logo.png' %}" alt="Unama Logo">
+        </div>
 
-{% if forms.errors %}
-<p>Username ou password estão incorretos</p>
-{% else %}
-<p>Por favor preencha o fomulario para o login</p>
-{% endif %}
+        <h1>Login</h1>
 
-<div class='login-form'>
+        {% if forms.errors %}
+        <p>Username ou password estão incorretos</p>
+        {% else %}
+        <p>Por favor preencha o fomulario para o login</p>
+        {% endif %}
 
-<form action="{% url 'login' %}" method='post'>
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{next}}">
-    <p><input type="submit" value="login"></p>
-</form>
-
-</div>
+        <div class="login-form">
+          <form action="{% url 'login' %}" method="post">
+            {{form.as_p}} {% csrf_token %}
+            <input type="hidden" name="next" value="{{next}}" />
+            <p><input type="submit" value="login" class="form-btn" /></p>
+          </form>
+        </div>
+        <!-- login-form -->
+      </div>
+    </main>
+  </body>
+</html>
 
 {% endblock content %}
