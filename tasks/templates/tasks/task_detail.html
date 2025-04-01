@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- Seção principal: Detalhes da Tarefa -->
-        <div class="col-md-8">
-            <h1>Detalhes da Tarefa</h1>
-            
+<div class="container-fluid">
+    <div class="row g-0" >
+
+        <!-- Coluna principal: Detalhes da Tarefa -->
+        <div class="col-md-3">
+            <h3>Detalhes da Tarefa:</h3>
+
             {% if not editing %}
             <div id="task-details">
                 <p><strong>Projeto:</strong> {{ task.title }}</p>
@@ -20,8 +21,7 @@
                 <p><strong>Data de criação:</strong> {{ task.created_at|date:"d/m/Y H:i" }}</p>
                 <p><strong>Data de Entrega:</strong> {{ task.due_date|date:"d/m/Y" }}</p>
 
-                <!-- Lista de Colaboradores -->
-                <h2>Colaboradores</h2>
+                <h4>Colaboradores:</h4>
                 <ul>
                     {% for user in task.collaborators.all %}
                         <li>{{ user.username }}</li>
@@ -32,7 +32,6 @@
             </div>
             {% endif %}
 
-            <!-- Formulário de Edição -->
             {% if editing %}
             <div id="task-edit">
                 <h2>Editar Tarefa</h2>
@@ -48,35 +47,43 @@
             <a href="{% url 'task-list' %}" class="btn btn-secondary mt-2">Voltar à Lista</a>
         </div>
 
-        <!-- Caixa lateral: Arquivos Relacionados -->
-        <div class="col-md-4">
-            <h2>Arquivos Relacionados</h2>
-            <ul>
-                {% for doc in task.documents.all %}
-                    <li>
-                        {% if doc.file %}
-                            <a href="{{ doc.file.url }}" target="_blank">{{ doc.file.name }}</a>
-                        {% elif doc.onedrive_link %}
-                            <a href="{{ doc.onedrive_link }}" target="_blank">🔗 Link do OneDrive</a>
-                        {% endif %}
-                        <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-danger btn-sm">Excluir</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <!-- Coluna lateral: Caixa com Arquivos Relacionados -->
+        <div class="col-md-9">
+            <div class="card shadow-lg p-4 w-100">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Arquivos Relacionados</h4>
+                </div>
+                <div class="card-body text-center">
+                    <ul>
+                        {% for doc in task.documents.all %}
+                            <li>
+                                {% if doc.file %}
+                                    <a href="{{ doc.file.url }}" target="_blank">{{ doc.file.name }}</a>
+                                {% elif doc.onedrive_link %}
+                                    <a href="{{ doc.onedrive_link }}" target="_blank">🔗 Link do OneDrive</a>
+                                {% endif %}
+                                <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
 
-            <!-- Formulário para adicionar novo arquivo ou link -->
-            <h3>Adicionar Novo Arquivo ou Link do OneDrive</h3>
-            <form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}">
-                {% csrf_token %}
-                
-                <label for="file">Selecionar Arquivo:</label>
-                <input type="file" name="file" id="file" class="form-control">
-            
-                <label for="onedrive_link">Adicionar Link do OneDrive:</label>
-                <input type="url" name="onedrive_link" id="onedrive_link" class="form-control">
-            
-                <button type="submit" class="btn btn-success mt-2">Enviar</button>
-            </form>
+                    <!-- Formulário para adicionar novo arquivo ou link -->
+                    <h3>Adicionar Novo Arquivo ou Link</h3>
+                    <form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}">
+                        {% csrf_token %}
+
+                        <label for="file">Selecionar Arquivo:</label>
+                        <input type="file" name="file" id="file" class="form-control">
+
+                        <label for="onedrive_link">Adicionar Link do OneDrive:</label>
+                        <input type="url" name="onedrive_link" id="onedrive_link" class="form-control">
+
+                        <button type="submit" class="btn btn-success mt-2">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 {% endblock %}
