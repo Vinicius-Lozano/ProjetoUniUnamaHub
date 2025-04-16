@@ -1,70 +1,49 @@
-* {
-    margin: 0;
-    padding: 0;
+:root {
+    /* Paleta */
+    --cor01: #000000;
+    --cor02: #222222;
+    --cor03: #1DCD9F;
+    --cor04: #169976;
+
+    /* Fonte: */
+    --font: "PT Sans", sans serif;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #0b7857;
+    background-color: var(--cor01);
+    font-family: var(--font);
 }
 
-.flex {
-    background-color: #0b7857;
-    padding: 3rem;
+/* CONTAINER FLEX */
+
+.flex-firstline {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.flex-img img {
-    height: 300px;
-    width: 300px;
-    position: relative;
-    animation: flutuar 2s ease-in-out infinite alternate;
-}
-
-@keyframes flutuar {
-    0% {
-        top: 0;
-    }
-    100% {
-        top: 30px;
-    }
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .flex-text {
-    display: flex;
-    padding: 1rem 0;
-    flex-direction: column;
-    color: white;
-    align-items: center;
-    font-family: "PT Sans", sans serif;
-}
-
-.flex-text h1 {
-    font-weight: 700;
-    font-size: 72px;
-    letter-spacing: 10px;
+    color: var(--cor03);
     text-transform: uppercase;
 }
 
+.flex-text h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 100px;
+    letter-spacing: .8rem;
+}
+
 .flex-text p {
-    font-size: 32px;
+    text-align: justify;
+    font-weight: 700;
+    font-size: 20px;
 }
 
-.btn button {
-    font-family: "PT Sans", sans serif;
-    color: white;
-    font-size: 32px;
-    font-weight: 600;
-    padding: 1rem;
-    background-color: #076747;
-    border-radius: 15%;
-    transition: .5s;
-}
-
-.btn button:hover {
-    box-shadow: 0px 0px 8px #045638;
-    transform: scale(1.05);
+.flex-img img {
+    width: 500px;
+    height: 500px;
 }
