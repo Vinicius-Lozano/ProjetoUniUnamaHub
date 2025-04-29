@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Faça login</title>
     <!-- CSS - LINK -->
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,24 +19,27 @@
   <body>
     <main>
       <div class="flex">
+        <div class="flex-text">
+          <h1>Login</h1>
 
-        <h1>Login</h1>
+          {% if forms.errors %}
+          <p>Username ou password estão incorretos</p>
+          {% else %}
+          <p>Por favor preencha o fomulario para o login</p>
+          {% endif %}
 
-        {% if forms.errors %}
-        <p>Username ou password estão incorretos</p>
-        {% else %}
-        <p>Por favor preencha o fomulario para o login</p>
-        {% endif %}
-
-        <div class="login-form">
-          <form action="{% url 'login' %}" method="post">
-            {{form.as_p}} {% csrf_token %}
-            <input type="hidden" name="next" value="{{next}}" />
-            <p><input type="submit" value="login" class="form-btn" /></p>
-          </form>
+          <div class="login-form">
+            <form action="{% url 'login' %}" method="post">
+              {{form.as_p}} {% csrf_token %}
+              <input type="hidden" name="next" value="{{next}}" />
+              <p><input type="submit" value="login" class="form-btn" /></p>
+            </form>
+          </div>
+          <!-- login-form -->
         </div>
-        <!-- login-form -->
+        <!-- flex-text -->
       </div>
+      <!-- flex -->
     </main>
   </body>
 </html>

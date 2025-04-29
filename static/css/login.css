@@ -1,27 +1,27 @@
-root {
-    --cor01: #0e8966;
-    --cor02: #0b7857;
-    --cor03: #076747;
-    --cor04: #045638;
-    --cor05: #004528;
-}
+:root {
+    /* Paleta */
+    --cor01: #000000;
+    --cor02: #222222;
+    --cor03: #1DCD9F;
+    --cor04: #169976;
+    --cor05: #00ff08;
+    --cor06: #28573C;
 
-* {
-    margin: 0;
-    padding: 0;
+    /* Fonte: */
+    --font: "PT Sans", sans serif;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #0b7857;
+    font-family: var(--font);
+    background-color: var(--cor01);
 }
 
 .flex {
     padding: 4rem 4%;
-    background-color: #0b7857;
-    font-family: "PT Sans", sans serif;
-    color: white;
+    background-color: var(--cor01);
+    color: var(--cor03);
     display: flex;
     flex-direction: column;
     align-items: center;
