@@ -5,6 +5,7 @@
     --cor03: #1DCD9F;
     --cor04: #169976;
     --cor05: #00ff08;
+    --cor06: #28573C;
 
     /* Fonte: */
     --font: "PT Sans", sans serif;
@@ -15,6 +16,10 @@ html, body {
     padding: 0;
     background-color: var(--cor01);
     font-family: var(--font);
+}
+
+span {
+    color: #28573C;
 }
 
 /* CONTAINER FLEX */
@@ -88,4 +93,15 @@ html, body {
 .btn button:hover {
     transition: 0.5s;
     transform: scale(1.05);
+}
+
+/* SECTION - CONHEÇA */
+
+.conheca > .flex {
+    padding-top: 40px;
+}
+
+section .flex-text h1 {
+    font-size: 50px;
+    font-weight: 1000;
 }
