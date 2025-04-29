@@ -4,6 +4,7 @@
     --cor02: #222222;
     --cor03: #1DCD9F;
     --cor04: #169976;
+    --cor05: #00ff08;
 
     /* Fonte: */
     --font: "PT Sans", sans serif;
@@ -18,16 +19,24 @@ html, body {
 
 /* CONTAINER FLEX */
 
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .flex-firstline {
+    width: 100vw;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 }
 
 .flex-text {
     color: var(--cor03);
     text-transform: uppercase;
+    margin-left: 60px;
 }
 
 .flex-text h1 {
@@ -43,7 +52,40 @@ html, body {
     font-size: 20px;
 }
 
+.flex-img {
+    margin-right: 60px;
+    perspective: 1000px;
+}
+
 .flex-img img {
     width: 500px;
     height: 500px;
+    position: relative;
+    animation: girar 10s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes girar {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.btn button {
+    width: 180px;
+    height: 80px;
+    border-radius: 25px;
+    background-color: var(--cor04);
+    color: white;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.btn button:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
 }
