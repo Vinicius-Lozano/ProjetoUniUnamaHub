@@ -1,144 +1,164 @@
 :root {
-    /* Paleta */
-    --cor01: #000000;
-    --cor02: #222222;
-    --cor03: #1DCD9F;
-    --cor04: #169976;
-    --cor05: #00ff08;
-    --cor06: #28573C;
+  /* Paleta */
+  --cor01: #000000;
+  --cor02: #222222;
+  --cor03: #1dcd9f;
+  --cor04: #169976;
+  --cor05: #00ff08;
+  --cor06: #28573c;
 
-    /* Fonte: */
-    --font: "PT Sans", sans serif;
+  /* Fonte: */
+  --font: "PT Sans", sans serif;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--cor01);
-    font-family: var(--font);
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor01);
+  font-family: var(--font);
 }
 
 span {
-    color: #28573C;
+  color: #28573c;
 }
 
 /* CONTAINER FLEX */
 
 .flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex-firstline {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .flex-text {
-    color: var(--cor03);
-    text-transform: uppercase;
-    margin-left: 60px;
+  color: var(--cor03);
+  text-transform: uppercase;
+  margin-left: 60px;
 }
 
 .flex-text h1 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 100px;
-    letter-spacing: .8rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 100px;
+  letter-spacing: 0.8rem;
 }
 
 .flex-text p {
-    text-align: justify;
-    font-weight: 700;
-    font-size: 20px;
+  text-align: justify;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .flex-img {
-    margin-right: 60px;
-    perspective: 1000px;
+  margin-right: 60px;
+  perspective: 1000px;
 }
 
 .flex-img img {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    animation: girar 10s linear infinite;
-    transform-style: preserve-3d;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  animation: girar 10s linear infinite;
+  transform-style: preserve-3d;
 }
 
 @keyframes girar {
-    from {
-        transform: rotateY(0deg);
-    }
+  from {
+    transform: rotateY(0deg);
+  }
 
-    to {
-        transform: rotateY(360deg);
-    }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
 .btn button {
-    width: 180px;
-    height: 80px;
-    border-radius: 25px;
-    background-color: var(--cor04);
-    color: white;
-    font-weight: 700;
-    font-size: 25px;
+  width: 140px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 22px;
+  background-color: var(--cor03);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn button:hover {
-    transition: 0.5s;
+  animation: pulse 0.7s;
+  box-shadow: 0 2px 6px var(--cor04);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
     transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* SECTION - CONHEÇA */
 
 .conheca > .flex {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 section .flex-text h1 {
-    font-size: 50px;
-    font-weight: 1000;
+  font-size: 50px;
+  font-weight: 1000;
 }
-
-
 
 /* PÁGINA: LOGIN */
 
 .flex {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .flex-text p {
-    text-transform: initial;
+  text-transform: initial;
 }
 
-.login-form form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-form form input {
-    background-color: var(--cor04);
-    border-radius: 25px;
+  background-color: var(--cor04);
+  border-radius: 25px;
 }
 
 .form-btn {
-    margin: 1rem 0;
-    font-size: 16px;
-    font-weight: 600;
-    width: 6rem;
-    height: 3rem;
-    border-radius: 15%;
-    transition: .5s;
+    width: 140px;
+    height: 60px;
+    font-weight: 700;
+    font-size: 22px;
+    background-color: var(--cor03);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .form-btn:hover {
-    transform: scale(1.05);
+    animation: pulse 0.7s;
+    box-shadow: 0 2px 6px var(--cor04);
 }
