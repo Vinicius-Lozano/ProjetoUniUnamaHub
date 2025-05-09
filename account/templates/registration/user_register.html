@@ -1,36 +1,49 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %} {% load static %}
 
-{% block content %}
-{% load static %}
-
-<head>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registre-se</title>
+    <!-- CSS - LINK -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
-<div class="flex">
-    <h1>Registrar-se</h1>
-    
-    <div class="register-form">
-        <form method="post">
-            {% csrf_token %}
-        
-            {% for field in form %}
-                <div class="form-group">
-                    <label>{{ field.label }}</label>
-                    {{ field }}
-                </div>
-            {% endfor %}
-        
-            <button type="submit" class="btn btn-primary form-btn">Registrar</button>
-        </form>
-    </div>
-</div>
+  </head>
+  <body>
+    <main>
+      <div class="flex">
+        <div class="flex-text">
+          <div class="register-h1">
+              <h1>Registrar-se</h1>
+          </div>
 
-</body>
+          <p>Preencha os espaços com seus dados para se registrar</p>
+
+          <div class="register-form">
+            <form method="post">
+              {% csrf_token %} {% for field in form %}
+              <div class="form-group">
+                <label>{{ field.label }}</label>
+                {{ field }}
+              </div>
+              {% endfor %}
+
+              <button type="submit" class="form-btn">Registrar</button>
+            </form>
+          </div>
+          <!-- register-form -->
+        </div>
+        <!-- flex-text -->
+      </div>
+      <!--  -->
+    </main>
+  </body>
+</html>
 {% endblock content %}

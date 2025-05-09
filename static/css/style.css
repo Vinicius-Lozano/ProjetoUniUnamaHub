@@ -132,13 +132,13 @@ section .flex-text h1 {
   text-transform: initial;
 }
 
-.login-form form {
+.login-form form, .register-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login-form form input {
+.login-form form input, .register-form form input {
   background-color: var(--cor04);
   border-radius: 25px;
 }
@@ -160,4 +160,9 @@ section .flex-text h1 {
 .form-btn:hover {
     animation: pulse 0.7s;
     box-shadow: 0 2px 6px var(--cor04);
+}
+
+/* REGISTRE-SE */
+.register-h1 h1 {
+  font-size: 100px;
 }
