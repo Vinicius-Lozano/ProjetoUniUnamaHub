@@ -163,6 +163,25 @@ section .flex-text h1 {
 }
 
 /* REGISTRE-SE */
-.register-h1 h1 {
+.register-text h1 {
   font-size: 100px;
 }
+
+.register-text p {
+  text-align: center;
+}
+
+.register-form {
+  padding: 10px 0;
+}
+
+.register-form label {
+padding: 8px;
+}
+
+.register-btn {
+  margin: 1rem;
+}
+
+/* Tasks */
+/* Tasks list */
