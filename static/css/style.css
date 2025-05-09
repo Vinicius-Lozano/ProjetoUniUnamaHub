@@ -184,4 +184,29 @@ padding: 8px;
 }
 
 /* Tasks */
+
 /* Tasks list */
+
+.task h1 {
+  text-align: left;
+  font-size: 52px;
+}
+
+.task form {
+  color: var(--cor03);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.task form option, textarea {
+  background-color: var(--cor04);
+}
+
+.task thead th {
+  color: var(--cor03);
+  font-size: 18px;
+  font-weight: 500;
+  background-color: var(--cor02);
+  padding: 10px;
+}
