@@ -67,17 +67,16 @@ span {
   width: 500px;
   height: 500px;
   position: relative;
-  animation: girar 10s linear infinite;
-  transform-style: preserve-3d;
+  animation: flutuar 2s ease-in-out infinite alternate;
 }
 
-@keyframes girar {
-  from {
-    transform: rotateY(0deg);
+@keyframes flutuar {
+  0% {
+      top: 0;
   }
 
-  to {
-    transform: rotateY(360deg);
+  100% {
+      top: 2.5rem;
   }
 }
 
