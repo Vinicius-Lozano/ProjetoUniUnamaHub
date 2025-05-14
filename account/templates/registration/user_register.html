@@ -1,47 +1,34 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registre-se</title>
-    <!-- CSS - LINK -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <main>
-      <div class="flex">
-        <div class="flex-text">
+<section class="register">
 
-              <div class="register-text">
-                  <h1>Registrar-se</h1>
-                  <p>Preencha os espaços com seus dados para se registrar</p>
-              </div>
+  <div class="flex">
 
-          <div class="register-form">
-            <form method="post">
-              {% csrf_token %} {% for field in form %}
-              <div class="form-group">
-                <label>{{ field.label }}</label>
-                {{ field }}
-              </div>
-              {% endfor %}
+    <div class="flex-img">
+      <img src="{% static 'img/symbol-unamahub.png' %}" alt="Unama Logo" class="logo-img">
+    </div> <!-- flex-img -->
 
-              <button type="submit" class="form-btn register-btn">Registrar</button>
-            </form>
-          </div>
-          <!-- register-form -->
-      </div>
-      <!--  -->
-    </main>
-  </body>
-</html>
+    <div class="flex-text">
+
+      <div class="register-text">
+        <h1>Registrar-se</h1>
+        <p>Preencha os espaços com seus dados para se registrar</p>
+      </div> <!-- register-text -->
+
+      <div class="register-form">
+        <form method="post">
+          {% csrf_token %} {% for field in form %}
+          <div class="form-group">
+            <label>{{ field.label }}</label>
+            {{ field }}
+          </div> <!-- form-group -->
+          {% endfor %}
+          <button type="submit" class="form-btn register-btn">Registrar</button>
+        </form>
+      </div> <!-- register-form -->
+
+    </div> <!-- flex -->
+
+</section>
+
 {% endblock content %}
