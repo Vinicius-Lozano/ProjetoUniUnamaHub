@@ -451,7 +451,6 @@ strong {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Texto "UnamaHub" estilizado */
 .navbar-title {
   font-weight: bold;
   font-size: 1.5rem;
@@ -462,10 +461,10 @@ strong {
   box-shadow: 0 2px 4px var(--cor03);
 }
 
-/* Links do menu */
 .navbar .nav-link,
 .navbar .btn {
-  color: var(--cor03) !important;
+  color: var(--cor06) !important;
+  font-weight: 500;
 }
 
 .navbar .btn-custom-primary {
