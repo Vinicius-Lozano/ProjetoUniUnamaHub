@@ -397,3 +397,16 @@ strong {
   font-style: normal;
   font-size: 1rem;
 }
+
+/* SECTION: LOGGED OUT */
+
+.logged-out .flex {
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.logged-out a {
+  color: var(--cor03);
+  text-decoration: none;
+}

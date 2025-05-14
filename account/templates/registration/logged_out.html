@@ -2,7 +2,18 @@
 
 {% block content %}
 
-<h1>Sessão Encerrada</h1>
-<p>Obrigado por usar nosso serviço<a href="{% url 'login' %}">Acessar novamente</a></p>
+<section class="logged-out">
+
+    <div class="flex">
+
+        <div class="flex-text">
+
+            <h1>Sessão Encerrada</h1>
+            <p>Obrigado por usar nosso serviço.<a href="{% url 'login' %}"> <span>Acessar novamente</span></a></p>
+
+        </div>
+    </div>
+
+</section>
 
 {% endblock content %}
