@@ -2,11 +2,16 @@
 
 {% block content %}
 
+{% load static %}
 <section class="logged-out">
 
     <div class="flex">
 
         <div class="flex-text">
+
+            <div class="flex-img">
+                <img src="{% static 'img/symbol-unamahub.png' %}" alt="Unama Logo" class="logo-img">
+            </div> <!-- flex-img -->
 
             <h1>Sessão Encerrada</h1>
             <p>Obrigado por usar nosso serviço.<a href="{% url 'login' %}"> <span>Acessar novamente</span></a></p>
