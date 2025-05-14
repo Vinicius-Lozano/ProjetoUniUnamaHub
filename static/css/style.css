@@ -30,7 +30,7 @@ span {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 25px;
   text-align: center;
 }
 
@@ -66,11 +66,11 @@ span {
 
 @keyframes flutuar {
   0% {
-      top: 0;
+    top: 0;
   }
 
   100% {
-      top: 2.5rem;
+    top: 2.5rem;
   }
 }
 
@@ -103,9 +103,11 @@ span {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
@@ -118,7 +120,7 @@ span {
   justify-content: center;
 }
 
-.conheca > .flex {
+.conheca>.flex {
   padding-top: 40px;
 }
 
@@ -154,34 +156,36 @@ section .flex-text h1 {
   text-align: center;
 }
 
-.login-form form, .register-form form {
+.login-form form,
+.register-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login-form form input, .register-form form input {
+.login-form form input,
+.register-form form input {
   background-color: var(--cor04);
   border-radius: 25px;
 }
 
 .form-btn {
-    width: 140px;
-    height: 60px;
-    font-weight: 700;
-    font-size: 22px;
-    background-color: var(--cor03);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 140px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 22px;
+  background-color: var(--cor03);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .form-btn:hover {
-    animation: pulse 0.7s;
-    box-shadow: 0 2px 6px var(--cor04);
+  animation: pulse 0.7s;
+  box-shadow: 0 2px 6px var(--cor04);
 }
 
 /* REGISTRE-SE */
@@ -212,7 +216,7 @@ section .flex-text h1 {
 }
 
 .register-form label {
-padding: 8px;
+  padding: 8px;
 }
 
 .register-btn {
@@ -278,7 +282,8 @@ padding: 8px;
 .form-inline {
   display: flex;
   align-items: center;
-  gap: 10px; /* espaço entre select e botão */
+  gap: 10px;
+  /* espaço entre select e botão */
   margin-bottom: 20px;
 }
 
@@ -309,90 +314,114 @@ padding: 8px;
 }
 
 .custom-card {
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #495057;  /* --cor03 */
-    padding: 25px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    color: #000000;  
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #495057;
+  /* --cor03 */
+  padding: 25px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  color: #000000;
 }
+
 .file-card {
-    background-color: #28573C;  /* --cor06 */
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    border-left: 4px solid #1DCD9F;  /* --cor03 */
-    color: #ffffff;
+  background-color: #28573C;
+  /* --cor06 */
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #1DCD9F;
+  /* --cor03 */
+  color: #ffffff;
 }
+
 .file-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(29, 205, 159, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(29, 205, 159, 0.3);
 }
+
 .btn-custom-primary {
-    background-color: #1DCD9F;  /* --cor03 */
-    border: none;
-    color: #000000;  /* Texto preto para melhor legibilidade no verde */
-    font-weight: 500;
+  background-color: #1DCD9F;
+  /* --cor03 */
+  border: none;
+  color: #000000;
+  /* Texto preto para melhor legibilidade no verde */
+  font-weight: 500;
 }
+
 .btn-custom-primary:hover {
-    background-color: #169976;  /* --cor04 */
-    color: #ffffff;
+  background-color: #169976;
+  /* --cor04 */
+  color: #ffffff;
 }
+
 .btn-custom-secondary {
-    background-color: #28573C;  /* --cor06 */
-    border: none;
-    color: #ffffff;
-    font-weight: 500;
+  background-color: #28573C;
+  /* --cor06 */
+  border: none;
+  color: #ffffff;
+  font-weight: 500;
 }
+
 .btn-custom-secondary:hover {
-    background-color: #169976;  /* --cor04 */
-    color: #ffffff;
+  background-color: #169976;
+  /* --cor04 */
+  color: #ffffff;
 }
+
 .card-header-custom {
-    background: linear-gradient(135deg, #28573c, #169976); 
-    border-radius: 12px 12px 0 0 !important;
-    padding: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #ffffff;
+  background: linear-gradient(135deg, #28573c, #169976);
+  border-radius: 12px 12px 0 0 !important;
+  padding: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
 }
 
 strong {
-    color: #169976;  /* --cor05 */
+  color: #169976;
+  /* --cor05 */
 }
+
 .form-control {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #1DCD9F;  /* --cor03 */
-    color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #1DCD9F;
+  /* --cor03 */
+  color: #ffffff;
 }
+
 .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    border-color: #00ff08;  /* --cor05 */
-    box-shadow: 0 0 0 0.25rem rgba(0, 255, 8, 0.25);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-color: #00ff08;
+  /* --cor05 */
+  box-shadow: 0 0 0 0.25rem rgba(0, 255, 8, 0.25);
 }
+
 .alert-dark {
-    background-color: #000000;  /* --cor01 */
-    color: #ffffff;
-    border-color: #1DCD9F;  /* --cor03 */
+  background-color: #000000;
+  /* --cor01 */
+  color: #ffffff;
+  border-color: #1DCD9F;
+  /* --cor03 */
 }
+
 .badge {
-    font-weight: 500;
-    padding: 0.35em 0.65em;
+  font-weight: 500;
+  padding: 0.35em 0.65em;
 }
 
 .subtitulo {
-    color: #1a6e33; 
-    font-family: 'PT Sans', sans-serif; 
-    font-weight: bold;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+  color: #1a6e33;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
 .valor-task {
-  color: #343a40; 
+  color: #343a40;
   font-weight: bold;
   font-style: normal;
   font-size: 1rem;
@@ -409,4 +438,41 @@ strong {
 .logged-out a {
   color: var(--cor03);
   text-decoration: none;
+}
+
+/* NAVBAR */
+
+/* Navbar personalizada */
+
+.navbar-custom {
+  background-color: var(--cor01);
+  font-family: var(--font);
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Texto "UnamaHub" estilizado */
+.navbar-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--cor03);
+}
+
+.navbar-custom {
+  box-shadow: 0 2px 4px var(--cor03);
+}
+
+/* Links do menu */
+.navbar .nav-link,
+.navbar .btn {
+  color: var(--cor03) !important;
+}
+
+.navbar .btn-custom-primary {
+  background-color: var(--cor03);
+  border: none;
+}
+
+.navbar .btn-custom-primary:hover {
+  background-color: var(--cor03);
 }
