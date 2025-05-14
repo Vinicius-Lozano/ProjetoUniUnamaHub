@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+<section class="task-list">
     <div class="flex task">
+    
         <div class="flex-text">
+    
             <h1>Projetos</h1>
+    
             <form method='get' action='{% url "task-list" %}'>
                 <label for='status'>Status: </label>
                 <select name="status" id='status'>
@@ -12,8 +17,9 @@
                     <option value='A'>Em Andamento</option>
                     <option value='C'>Concluido</option>
                 </select>
-                <button type='submit'>Filtrar</button>
+                <button type='submit' class="btn-filtrar">Filtrar</button>
             </form>
+    
             <table class="table table-striped-columns table-hover">
                 <thead>
                     <tr>
@@ -25,31 +31,33 @@
                         <th scope="col">Status</th>
                         <th scope="col">Açoes</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
                     {% for task in tasks %}
-                        <tr onclick="window.location.href='{% url "task-detail" pk=task.pk %}'" style="cursor: pointer;">
-                            <td>{{task.pk}}</td>
-                            <td>{{task.title}}</td>
-                            <td>{{task.description}}</td>
-                            <td>{{task.created_at}}</td>
-                            <td>{{task.due_date}}</td>
-                            <td>
-                                {% if task.status == 'P'%}
-                                    <span class="badge bg-warning" title="Pendente">P</span>
-                                {% elif task.status == 'A' %}
-                                    <span class='badge bg-info' title='Em Andamento'>A</span>
-                                {% elif task.status == 'C' %}
-                                    <span class='badge bg-success' title='Completo'>C</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a href="{% url "task-delete" pk=task.pk %}" class=" btn btn-danger btn-sm">Excluir</a>
-                            </td>
-                        </tr>
+                    <tr onclick="window.location.href='{% url 'task-detail' pk=task.pk %}'" style="cursor: pointer;">
+                        <td>{{task.pk}}</td>
+                        <td>{{task.title}}</td>
+                        <td>{{task.description}}</td>
+                        <td>{{task.created_at}}</td>
+                        <td>{{task.due_date}}</td>
+                        <td>
+                            {% if task.status == 'P'%}
+                            <span class="badge bg-warning" title="Pendente">P</span>
+                            {% elif task.status == 'A' %}
+                            <span class='badge bg-info' title='Em Andamento'>A</span>
+                            {% elif task.status == 'C' %}
+                            <span class='badge bg-success' title='Completo'>C</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url "task-delete" pk=task.pk %}" class=" btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
         </div>
     </div> <!-- flex -->
+    
+</section>
 {% endblock content %}
