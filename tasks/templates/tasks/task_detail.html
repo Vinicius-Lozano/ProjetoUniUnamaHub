@@ -1,89 +1,124 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row g-0" >
-
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container-fluid pt-4">
+    <div class="row g-4">
         <!-- Coluna principal: Detalhes da Tarefa -->
-        <div class="col-md-3">
-            <h3>Detalhes da Tarefa:</h3>
+        <div class="col-lg-4">
+            <div class="custom-card h-100">
+                <h3 class='subtitulo'><i class="bi bi-list-task me-2"></i>Detalhes da Tarefa</h3>
 
-            {% if not editing %}
-            <div id="task-details">
-                <p><strong>Projeto:</strong> {{ task.title }}</p>
-                <p><strong>Descrição:</strong> {{ task.description }}</p>
-                <p><strong>Status:</strong>
-                    {% if task.status == 'P' %} Pendente
-                    {% elif task.status == 'A' %} Em Andamento
-                    {% elif task.status == 'C' %} Concluído
-                    {% endif %}
-                </p>
-                <p><strong>Data de criação:</strong> {{ task.created_at|date:"d/m/Y H:i" }}</p>
-                <p><strong>Data de Entrega:</strong> {{ task.due_date|date:"d/m/Y" }}</p>
+                {% if not editing %}
+                <div id="task-details">
+                    <p><strong><i class="bi bi-card-heading me-2 text-black"></i>Projeto:</strong> <span class="valor-task">{{ task.title }}</span></p>
+                    <p><strong><i class="bi bi-text-paragraph me-2"></i>Descrição:</strong> <span class="valor-task">{{ task.description }}</span></p>
+                    <p><strong><i class="bi bi-info-circle me-2"></i>Status:</strong>
+                        <span class="badge 
+                            {% if task.status == 'P' %}bg-warning text-dark
+                            {% elif task.status == 'A' %}bg-primary
+                            {% elif task.status == 'C' %}bg-success
+                            {% endif %}">
+                            <span class="valor-task">
+                                {% if task.status == 'P' %} Pendente
+                                {% elif task.status == 'A' %} Em Andamento
+                                {% elif task.status == 'C' %} Concluído
+                                {% endif %}
+                            </span>
+                        </span>
+                    </p>
+                    <p><strong><i class="bi bi-calendar-plus me-2"></i>Data de criação:</strong> <span class="valor-task">{{ task.created_at|date:"d/m/Y H:i" }}</span></p>
+                    <p><strong><i class="bi bi-calendar-check me-2"></i>Data de Entrega:</strong> <span class="valor-task">{{ task.due_date|date:"d/m/Y" }}</span></p>
 
-                <h4>Colaboradores:</h4>
-                <ul>
-                    {% for user in task.collaborators.all %}
-                        <li>{{ user.username }}</li>
-                    {% endfor %}
-                </ul>
+                    <h4 class='subtitulo'><i class="bi bi-people me-2"></i>Colaboradores:</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for user in task.collaborators.all %}
+                            <span class="badge bg-secondary">{{ user.username }}</span>
+                        {% endfor %}
+                    </div>
 
-                <a href="?editing=true" class="btn btn-warning">Editar</a>
+                    <div class="d-grid gap-2 d-md-flex mt-4">
+                        <a href="?editing=true" class="btn btn-custom-primary me-md-2"><i class="bi bi-pencil me-1"></i>Editar</a>
+                        <a href="{% url 'task-list' %}" class="btn btn-custom-secondary"><i class="bi bi-arrow-left me-1"></i>Voltar à Lista</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if editing %}
+                <div id="task-edit">
+                    <h2><i class="bi bi-pencil me-2"></i>Editar Tarefa</h2>
+                    <form method="POST" class="form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid gap-2 d-md-flex mt-3">
+                            <button type="submit" class="btn btn-custom-primary me-md-2"><i class="bi bi-save me-1"></i>Salvar Alterações</button>
+                            <a href="?editing=false" class="btn btn-custom-secondary"><i class="bi bi-x me-1"></i>Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
-
-            {% if editing %}
-            <div id="task-edit">
-                <h2>Editar Tarefa</h2>
-                <form method="POST" class="form">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    <a href="?editing=false" class="btn btn-secondary">Cancelar</a>
-                </form>
-            </div>
-            {% endif %}
-
-            <a href="{% url 'task-list' %}" class="btn btn-secondary mt-2">Voltar à Lista</a>
         </div>
 
         <!-- Coluna lateral: Caixa com Arquivos Relacionados -->
-        <div class="col-md-9">
-            <div class="card shadow-lg p-4 w-100">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Arquivos Relacionados</h4>
+        <div class="col-lg-8">
+            <div class="custom-card">
+                <div class="card-header-custom mb-4">
+                    <h4 class="m-0"><i class="bi bi-paperclip me-2"></i>Arquivos Relacionados</h4>
                 </div>
-                <div class="card-body text-center">
-                    <ul>
-                        {% for doc in task.documents.all %}
-                            <li>
-                                {% if doc.file %}
-                                    <a href="{{ doc.file.url }}" target="_blank">{{ doc.file.name }}</a>
-                                {% elif doc.onedrive_link %}
-                                    <a href="{{ doc.onedrive_link }}" target="_blank">🔗 Link do OneDrive</a>
-                                {% endif %}
-                                <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-danger btn-sm">Excluir</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
 
-                    <!-- Formulário para adicionar novo arquivo ou link -->
-                    <h3>Adicionar Novo Arquivo ou Link</h3>
-                    <form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}">
+                <div class="row g-3 mb-4">
+                    {% for doc in task.documents.all %}
+                    <div class="col-md-6">
+                        <div class="file-card d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if doc.file %}
+                                    <a href="{{ doc.file.url }}" target="_blank" class="text-white text-decoration-none">
+                                        <i class="bi bi-file-earmark me-2"></i><span>{{ doc.file.name|truncatechars:25 }}</span>
+                                    </a>
+                                {% elif doc.onedrive_link %}
+                                    <a href="{{ doc.onedrive_link }}" target="_blank" class="text-white text-decoration-none">
+                                        <i class="bi bi-cloud me-2"></i><span>Link do OneDrive</span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'file-delete' pk=doc.pk %}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-dark text-center">
+                            Nenhum arquivo vinculado a esta tarefa
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Formulário para adicionar novo arquivo ou link -->
+                <div class="mt-4 pt-3 border-top border-secondary">
+                    <h4 class='subtitulo'><i class="bi bi-plus-circle me-2"></i>Adicionar Novo Arquivo</h4>
+                    <form method="POST" enctype="multipart/form-data" action="{% url 'file-upload' pk=task.pk %}" class="row g-3">
                         {% csrf_token %}
 
-                        <label for="file">Selecionar Arquivo:</label>
-                        <input type="file" name="file" id="file" class="form-control">
+                        <div class="col-md-6">
+                            <label for="file" class="form-label">Selecionar Arquivo:</label>
+                            <input type="file" name="file" id="file" class="form-control">
+                        </div>
 
-                        <label for="onedrive_link">Adicionar Link do OneDrive:</label>
-                        <input type="url" name="onedrive_link" id="onedrive_link" class="form-control">
+                        <div class="col-md-6">
+                            <label for="onedrive_link" class="form-label">Adicionar Link do OneDrive:</label>
+                            <input type="url" name="onedrive_link" id="onedrive_link" class="form-control" placeholder="https://...">
+                        </div>
 
-                        <button type="submit" class="btn btn-success mt-2">Enviar</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-custom-primary mt-2"><i class="bi bi-upload me-1"></i>Enviar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 {% endblock %}

@@ -1,76 +1,55 @@
 {% extends "base.html" %}
-
-{% block content %}
 {% load static %}
-
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>UnamaHub</title>
-            <!-- CSS - LINK -->
-            <link rel="stylesheet" href="{% static 'css/style.css' %}">
-            <!-- Google fonts -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        </head>
-    <body>
-        <main>
-            <div class="flex task">
-                <div class="flex-text">
-                    <h1>Projetos</h1>
-                    <form method='get' action='{% url "task-list" %}'>
-                        <label for='status'>Status: </label>
-                        <select name="status" id='status'>
-                            <option value=''>Todos</option>
-                            <option value='P'>Pendente</option>
-                            <option value='A'>Em Andamento</option>
-                            <option value='C'>Concluido</option>
-                        </select>
-                        <button type='submit'>Filtrar</button>
-                    </form>
-                    <table class="table table-striped-columns table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Projeto</th>
-                                <th scope="col">Descriçao</th>
-                                <th scope="col">Data De criaçao</th>
-                                <th scope="col">Data de Entrega</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Açoes</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for task in tasks %}
-                                <tr onclick="window.location.href='{% url "task-detail" pk=task.pk %}'" style="cursor: pointer;">
-                                    <td>{{task.pk}}</td>
-                                    <td>{{task.title}}</td>
-                                    <td>{{task.description}}</td>
-                                    <td>{{task.created_at}}</td>
-                                    <td>{{task.due_date}}</td>
-                                    <td>
-                                        {% if task.status == 'P'%}
-                                            <span class="badge bg-warning" title="Pendente">P</span>
-                                        {% elif task.status == 'A' %}
-                                            <span class='badge bg-info' title='Em Andamento'>A</span>
-                                        {% elif task.status == 'C' %}
-                                            <span class='badge bg-success' title='Completo'>C</span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        <a href="{% url "task-delete" pk=task.pk %}" class=" btn btn-danger btn-sm">Excluir</a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                          </tbody>
-                      </table>
-                </div>
-            </div> <!-- flex -->
-        </main>
-    </body>
-    </html>
-
+{% block content %}
+    <div class="flex task">
+        <div class="flex-text">
+            <h1>Projetos</h1>
+            <form method='get' action='{% url "task-list" %}'>
+                <label for='status'>Status: </label>
+                <select name="status" id='status'>
+                    <option value=''>Todos</option>
+                    <option value='P'>Pendente</option>
+                    <option value='A'>Em Andamento</option>
+                    <option value='C'>Concluido</option>
+                </select>
+                <button type='submit'>Filtrar</button>
+            </form>
+            <table class="table table-striped-columns table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Projeto</th>
+                        <th scope="col">Descriçao</th>
+                        <th scope="col">Data De criaçao</th>
+                        <th scope="col">Data de Entrega</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Açoes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in tasks %}
+                        <tr onclick="window.location.href='{% url "task-detail" pk=task.pk %}'" style="cursor: pointer;">
+                            <td>{{task.pk}}</td>
+                            <td>{{task.title}}</td>
+                            <td>{{task.description}}</td>
+                            <td>{{task.created_at}}</td>
+                            <td>{{task.due_date}}</td>
+                            <td>
+                                {% if task.status == 'P'%}
+                                    <span class="badge bg-warning" title="Pendente">P</span>
+                                {% elif task.status == 'A' %}
+                                    <span class='badge bg-info' title='Em Andamento'>A</span>
+                                {% elif task.status == 'C' %}
+                                    <span class='badge bg-success' title='Completo'>C</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url "task-delete" pk=task.pk %}" class=" btn btn-danger btn-sm">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div> <!-- flex -->
 {% endblock content %}

@@ -1,15 +1,40 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="custom-card">
+                <div class="card-header-custom">
+                    <i class="bi bi-plus-circle me-2"></i>Cadastrar Nova Tarefa
+                </div>
+                <form method="post" class="form mt-4">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <div class="form-text">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
 
-    <h1>Cadastrar Tarefa</h1>
-
-    <form method="post" class="form">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class=" btn btn-primary ">Cadastrar</button>
-    </form>
-
-    <a href="{% url "task-list" %}">Cancelar</a>
-
-{% endblock content %}
+                    <div class="d-grid gap-2 d-md-flex mt-4 justify-content-end">
+                        <button type="submit" class="btn btn-custom-primary me-md-2">
+                            <i class="bi bi-check-circle me-1"></i>Cadastrar
+                        </button>
+                        <a href="{% url 'task-list' %}" class="btn btn-custom-secondary">
+                            <i class="bi bi-x-circle me-1"></i>Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
