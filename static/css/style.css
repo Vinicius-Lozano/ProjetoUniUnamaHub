@@ -132,9 +132,15 @@ section .flex-text h1 {
 .login .flex {
   align-items: center;
   justify-items: center;
-  padding-top: 40px;
-  height: 100vh;
+  height: 80vh;
   padding-top: 0;
+  margin-top: 0;
+}
+
+.login .flex-img img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 25px;
 }
 
 .login .flex-text {
