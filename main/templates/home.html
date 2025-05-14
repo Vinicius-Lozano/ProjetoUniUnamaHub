@@ -2,21 +2,23 @@
 {% load static %}
 
 {% block content %}
-  <div class="header-container">
-    <div class="flex-firstline">
+  <div class="flex">
+
       <div class="flex-text">
         <h1>unama<span>hub</span></h1>
         <p>Conectabilidade entre professores e alunos de forma prática!</p>
-      </div>
-      <div>
+      </div> <!-- flex-text -->
+
+      <div class="flex-img">
         <img src="{% static 'img/unamahub-logo.png' %}" alt="Unama Logo" class="logo-img">
       </div>
-    </div>
+
+  </div> <!-- flex -->
 
     <div class="btn mt-4">
       <a href=".conheca"><button>Conheça!</button></a>
-    </div>
-  </div>
+    </div> <!-- btn -->
+    
 
   <section class="conheca">
     <div class="flex">

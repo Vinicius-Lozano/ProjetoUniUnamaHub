@@ -15,42 +15,29 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--cor06);
+  background-color: var(--cor01);
   font-family: var(--font);
 }
 
 span {
-  color: white;
+  color: var(--cor04);
 }
 
 /* CONTAINER FLEX */
 
 .flex {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 40px;
   text-align: center;
-}
-
-.logo-img {
-  width: 40vh;
-  height: auto;
-  position: relative;
-  animation: flutuar 2s ease-in-out infinite alternate;
 }
 
 .flex-text {
   color: var(--cor03);
   text-transform: uppercase;
-  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .flex-text h1 {
@@ -67,7 +54,6 @@ span {
 }
 
 .flex-img {
-  margin-right: 60px;
   perspective: 1000px;
 }
 
@@ -86,6 +72,12 @@ span {
   100% {
       top: 2.5rem;
   }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn button {
@@ -120,6 +112,11 @@ span {
 }
 
 /* SECTION - CONHEÇA */
+
+.conheca .flex {
+  align-items: center;
+  justify-content: center;
+}
 
 .conheca > .flex {
   padding-top: 40px;
