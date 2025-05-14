@@ -129,12 +129,23 @@ section .flex-text h1 {
 
 /* PÁGINA: LOGIN */
 
-.flex {
+.login .flex {
+  align-items: center;
+  justify-items: center;
   padding-top: 40px;
+  height: 100vh;
+  padding-top: 0;
+}
+
+.login .flex-text {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .flex-text p {
   text-transform: initial;
+  text-align: center;
 }
 
 .login-form form, .register-form form {
