@@ -45,12 +45,12 @@
 
         <div class="navbar-nav ms-auto">
           {% if request.user.is_authenticated %}
-          <span class="nav-link">Olá, {{ request.user.username }}</span>
+          <span class="nav-link fw-bold">Olá, {{ request.user.username }}</span>
 
           <div class="d-flex flex-column align-items-start">
             <form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
-              <button type="submit" class="btn btn-link nav-link">Logout</button>
+              <button type="submit" class="btn btn-link nav-link fw-bold btn btn-outline-success">Logout</button>
             </form>
           </div>
           {% else %}

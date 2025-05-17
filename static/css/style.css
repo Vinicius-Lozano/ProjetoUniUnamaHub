@@ -1,10 +1,10 @@
 :root {
   /* Paleta */
-  --cor01: #000000;
-  --cor02: #222222;
-  --cor03: #1dcd9f;
-  --cor04: #169976;
-  --cor05: #00ff08;
+  --cor01: #00FF84;
+  --cor02: #006644;
+  --cor03: #0D0D0D;
+  --cor04: #1F1F1F;
+  --cor05: #E0FFE5;
   --cor06: #28573c;
 
   /* Fonte: */
@@ -15,12 +15,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--cor01);
+  background-color: var(--cor02);
   font-family: var(--font);
 }
 
 span {
-  color: var(--cor04);
+  color: var(--cor01);
 }
 
 /* CONTAINER FLEX */
@@ -35,7 +35,7 @@ span {
 }
 
 .flex-text {
-  color: var(--cor03);
+  color: var(--cor04);
   text-transform: uppercase;
   margin-right: 60px;
 }
@@ -85,8 +85,8 @@ span {
   height: 60px;
   font-weight: 700;
   font-size: 22px;
-  background-color: var(--cor03);
-  color: white;
+  background-color: var(--cor04);
+  color: var(--cor05);
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -96,7 +96,7 @@ span {
 
 .btn button:hover {
   animation: pulse 0.7s;
-  box-shadow: 0 2px 6px var(--cor04);
+  box-shadow: 0 2px 6px var(--cor05);
 }
 
 @keyframes pulse {
@@ -445,7 +445,7 @@ strong {
 /* Navbar personalizada */
 
 .navbar-custom {
-  background-color: var(--cor01);
+  background-color: var(--cor02);
   font-family: var(--font);
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -463,7 +463,7 @@ strong {
 
 .navbar .nav-link,
 .navbar .btn {
-  color: var(--cor06) !important;
+  color: var(--cor01) !important;
   font-weight: 500;
 }
 
@@ -473,5 +473,5 @@ strong {
 }
 
 .navbar .btn-custom-primary:hover {
-  background-color: var(--cor03);
+  background-color: var(--cor05);
 }
