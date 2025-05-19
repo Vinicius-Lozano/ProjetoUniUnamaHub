@@ -3,11 +3,12 @@
 {% block content %}
 
 <section class="task-list">
+    
     <div class="flex task">
     
         <div class="flex-text">
     
-            <h1>Projetos</h1>
+            <h1>Seus Projetos</h1>
     
             <form method='get' action='{% url "task-list" %}'>
                 <label for='status'>Status: </label>
@@ -50,7 +51,11 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="{% url "task-delete" pk=task.pk %}" class=" btn btn-danger btn-sm">Excluir</a>
+                            <a href="{% url "task-delete" pk=task.pk %}" class="btn btn-danger btn-sm me-1">Excluir</a>
+                            <button type="button" class="btn btn-outline-secondary btn-sm"
+                                onclick="copiarLinkLista('{{ request.build_absolute_uri|add:task.get_absolute_url }}')">
+                                <i class="bi bi-share"></i>
+                            </button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -58,6 +63,12 @@
             </table>
         </div>
     </div> <!-- flex -->
-    
 </section>
+<script>
+function copiarLinkLista(link) {
+    navigator.clipboard.writeText(link).then(function() {
+        alert('Link copiado para a área de transferência!');
+    });
+}
+</script>
 {% endblock content %}

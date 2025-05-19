@@ -1,5 +1,6 @@
 :root {
   /* Paleta */
+  --cor00: #ffffff;
   --cor01: #00FF84;
   --cor02: #006644;
   --cor03: #0D0D0D;
@@ -165,7 +166,7 @@ section .flex-text h1 {
 
 .login-form form input,
 .register-form form input {
-  background-color: var(--cor04);
+  background-color: var(--cor00);
   border-radius: 25px;
 }
 
@@ -174,8 +175,8 @@ section .flex-text h1 {
   height: 60px;
   font-weight: 700;
   font-size: 22px;
-  background-color: var(--cor03);
-  color: white;
+  background-color: var(--cor00);
+  color: var(--cor03);
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -387,13 +388,10 @@ strong {
 .form-control {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #1DCD9F;
-  /* --cor03 */
-  color: #ffffff;
 }
 
 .form-control:focus {
   background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
   border-color: #00ff08;
   /* --cor05 */
   box-shadow: 0 0 0 0.25rem rgba(0, 255, 8, 0.25);
@@ -445,7 +443,7 @@ strong {
 /* Navbar personalizada */
 
 .navbar-custom {
-  background-color: var(--cor02);
+  background-color: var(--cor05);
   font-family: var(--font);
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -463,15 +461,22 @@ strong {
 
 .navbar .nav-link,
 .navbar .btn {
-  color: var(--cor01) !important;
+  color: var(--cor03) !important;
   font-weight: 500;
 }
 
 .navbar .btn-custom-primary {
-  background-color: var(--cor03);
+  background-color: var(--cor02);
   border: none;
 }
 
 .navbar .btn-custom-primary:hover {
-  background-color: var(--cor05);
+  background-color: var(--cor01);
+}
+
+.task-list table .btn {
+  display: inline-block !important;
+  width: auto !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle;
 }

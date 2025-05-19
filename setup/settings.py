@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tasks.apps.TasksConfig',
     'filemanager',
+    'dal',
+    'dal_select2',
     
 ]
 

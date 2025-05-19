@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
     <div class="row g-4">
         <!-- Coluna principal: Detalhes da Tarefa -->
@@ -10,7 +9,7 @@
 
                 {% if not editing %}
                 <div id="task-details">
-                    <p><strong><i class="bi bi-card-heading me-2 text-black"></i>Projeto:</strong> <span class="valor-task">{{ task.title }}</span></p>
+                    <p><strong><i class="bi bi-card-heading me-2"></i>Projeto:</strong> <span class="valor-task">{{ task.title }}</span></p>
                     <p><strong><i class="bi bi-text-paragraph me-2"></i>Descrição:</strong> <span class="valor-task">{{ task.description }}</span></p>
                     <p><strong><i class="bi bi-info-circle me-2"></i>Status:</strong>
                         <span class="badge 
@@ -38,17 +37,21 @@
 
                     <div class="d-grid gap-2 d-md-flex mt-4">
                         <a href="?editing=true" class="btn btn-custom-primary me-md-2"><i class="bi bi-pencil me-1"></i>Editar</a>
-                        <a href="{% url 'task-list' %}" class="btn btn-custom-secondary"><i class="bi bi-arrow-left me-1"></i>Voltar à Lista</a>
+                        <a href="{% url 'task-list' %}" class="btn btn-custom-secondary"><i class="bi bi-arrow-left me-1"></i>Voltar</a>
+                        <button type="button" class="btn btn-outline-secondary" onclick="copiarLinkRepositorio()">
+                            <i class="bi bi-share me-1"></i>Compartilhar
+                        </button>
                     </div>
                 </div>
                 {% endif %}
-
+        <!-- Editar Tarefa -->
                 {% if editing %}
                 <div id="task-edit">
                     <h2><i class="bi bi-pencil me-2"></i>Editar Tarefa</h2>
                     <form method="POST" class="form">
                         {% csrf_token %}
                         {{ form.as_p }}
+                        {{ form.media }}
                         <div class="d-grid gap-2 d-md-flex mt-3">
                             <button type="submit" class="btn btn-custom-primary me-md-2"><i class="bi bi-save me-1"></i>Salvar Alterações</button>
                             <a href="?editing=false" class="btn btn-custom-secondary"><i class="bi bi-x me-1"></i>Cancelar</a>
@@ -118,4 +121,13 @@
         </div>
     </div>
 </div>
+
+<script>
+function copiarLinkRepositorio() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+        alert('Link copiado para a área de transferência!');
+    });
+}
+</script>
+
 {% endblock %}

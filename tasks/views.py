@@ -6,6 +6,9 @@ from .models import Task
 from .forms import TaskForm, TaskCollaboratorForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from dal import autocomplete
+from django.contrib.auth.models import User
+from django.db import models
 
 
 class TaskListView(LoginRequiredMixin, ListView):
@@ -82,3 +85,15 @@ class TaskCollaboratorUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
          return Task.objects.filter(user=self.request.user)
+
+class UserAutocompleteView(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = User.objects.filter(is_active=True)
+        
+        if self.q:
+            qs = qs.filter(
+                models.Q(username__icontains=self.q) |
+                models.Q(first_name__icontains=self.q) |
+                models.Q(last_name__icontains=self.q)
+            )
+        return qs
