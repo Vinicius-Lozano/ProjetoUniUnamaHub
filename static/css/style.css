@@ -216,6 +216,35 @@ section .flex-text h1 {
   padding: 10px 0;
 }
 
+.register-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+
+  /* configurações para deixar a informação (ex.: "password-confirmation") acima do input (campo para inserir informação)  */
+}
+
+.register-form .form-group label {
+  font-weight: bold;
+  color: var(--cor03);
+
+  /* também é configuração para obs acima */
+}
+
+.register-form .form-group input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid var(--cor06);
+  background-color: var(--cor00);
+  font-size: 16px;
+
+  /* também é configuração para isso (acima) */
+}
+
 .register-form label {
   padding: 8px;
 }
