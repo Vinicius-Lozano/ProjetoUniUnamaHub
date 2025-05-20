@@ -509,3 +509,8 @@ strong {
   margin-bottom: 0 !important;
   vertical-align: middle;
 }
+
+/* TASK- DELETE */
+.task-delete form {
+  margin: 10px 0;
+}
