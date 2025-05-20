@@ -21,7 +21,7 @@ body {
 }
 
 span {
-  color: var(--cor01);
+  color: var(--cor05);
 }
 
 /* CONTAINER FLEX */
@@ -443,7 +443,7 @@ strong {
 /* Navbar personalizada */
 
 .navbar-custom {
-  background-color: var(--cor05);
+  background-color: var(--cor02);
   font-family: var(--font);
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -461,7 +461,7 @@ strong {
 
 .navbar .nav-link,
 .navbar .btn {
-  color: var(--cor03) !important;
+  color: var(--cor05) !important;
   font-weight: 500;
 }
 
